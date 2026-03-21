@@ -30,12 +30,12 @@ interface Product {
 }
 
 const PRODUCTS: Product[] = [
-  { id: 1, name: 'Masterclass de Trading', link: 'https://example.com/trading', color: '#FF6B6B', description: 'Aprende a invertir como un profesional.' },
-  { id: 2, name: 'Curso de Marketing Digital', link: 'https://example.com/mkt', color: '#4ECDC4', description: 'Domina las redes sociales y vende más.' },
-  { id: 3, name: 'Suplemento Keto Pro', link: 'https://example.com/keto', color: '#FFE66D', description: 'Energía pura para tu estilo de vida.' },
-  { id: 4, name: 'Ebook: Libertad Financiera', link: 'https://example.com/ebook', color: '#1A535C', description: 'El camino hacia tu independencia.' },
-  { id: 5, name: 'Software SEO Elite', link: 'https://example.com/seo', color: '#F7FFF7', description: 'Posiciona tu web en el primer lugar.' },
-  { id: 6, name: 'Membresía Fitness VIP', link: 'https://example.com/fitness', color: '#FF9F1C', description: 'Entrena desde casa con los mejores.' },
+  { id: 1, name: 'Masterclass de Trading', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=70090&tracking_id=/trading', color: '#FF6B6B', description: 'Aprende a invertir como un profesional.' },
+  { id: 2, name: 'Curso de Marketing Digital', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=56777&tracking_id= /mkt', color: '#4ECDC4', description: 'Domina las redes sociales y vende más.' },
+  { id: 3, name: 'Suplemento Keto Pro', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=70157&tracking_id= ', color: '#FFE66D', description: 'Energía pura para tu estilo de vida.' },
+  { id: 4, name: 'Ebook: Libertad Financiera', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=71637&tracking_id= ', color: '#1A535C', description: 'El camino hacia tu independencia.' },
+  { id: 5, name: 'Software SEO Elite', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=71187&tracking_id= ', color: '#F7FFF7', description: 'Posiciona tu web en el primer lugar.' },
+  { id: 6, name: 'Membresía Fitness VIP', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=68576&tracking_id= ', color: '#FF9F1C', description: 'Entrena desde casa con los mejores.' },
 ];
 
 export default function App() {
