@@ -30,12 +30,12 @@ interface Product {
 }
 
 const PRODUCTS: Product[] = [
-  { id: 1, name: 'Tarjeta Regalo $500', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=68576&tracking_id=', color: '#FF6B6B', description: '¡Felicidades! Has ganado la oportunidad de obtener una tarjeta de regalo exclusiva.' },
-  { id: 2, name: 'iPhone 15 Pro Max', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=71187&tracking_id=', color: '#4ECDC4', description: '¡Increíble! Participa ahora para llevarte el último iPhone a casa.' },
-  { id: 3, name: 'Sorteo PlayStation 5', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=71637&tracking_id=', color: '#FFE66D', description: 'La consola de tus sueños te espera. Haz clic para completar tu registro.' },
+  { id: 1, name: 'iPhone 15 Pro Max', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=71187&tracking_id=', color: '#4ECDC4', description: '¡Increíble! Participa ahora para llevarte el último iPhone a casa.' },
+  { id: 2, name: 'Sorteo PayPal $100', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=70090&tracking_id=', color: '#FF9F1C', description: 'Dinero directo a tu cuenta. ¡No dejes pasar esta oportunidad!' },
+  { id: 3, name: 'Tarjeta Regalo $500', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=68576&tracking_id=', color: '#FF6B6B', description: '¡Felicidades! Has ganado la oportunidad de obtener una tarjeta de regalo exclusiva.' },
   { id: 4, name: 'Vale Amazon $200', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=70157&tracking_id=', color: '#1A535C', description: 'Compra lo que quieras con este vale de Amazon. ¡Reclámalo ya!' },
-  { id: 5, name: 'Muestra Gratis Tech', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=56777&tracking_id=', color: '#F7FFF7', description: 'Recibe muestras exclusivas de los mejores gadgets del mercado.' },
-  { id: 6, name: 'Sorteo PayPal $100', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=70090&tracking_id=', color: '#FF9F1C', description: 'Dinero directo a tu cuenta. ¡No dejes pasar esta oportunidad!' },
+  { id: 5, name: 'Sorteo PlayStation 5', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=71637&tracking_id=', color: '#FFE66D', description: 'La consola de tus sueños te espera. Haz clic para completar tu registro.' },
+  { id: 6, name: 'Muestra Gratis Tech', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=56777&tracking_id=', color: '#F7FFF7', description: 'Recibe muestras exclusivas de los mejores gadgets del mercado.' },
 ];
 
 export default function App() {
@@ -85,19 +85,22 @@ export default function App() {
     setShowModal(false);
     setSpinsRemaining(prev => prev - 1);
 
-    const extraDegrees = Math.floor(Math.random() * 360);
-    const totalRotation = rotation + (360 * (5 + Math.floor(Math.random() * 5))) + extraDegrees;
+    // Improved logic: Pick winner first, then calculate rotation
+    const winningIndex = Math.floor(Math.random() * PRODUCTS.length);
+    const segmentSize = 360 / PRODUCTS.length;
+    const targetAngleOnWheel = winningIndex * segmentSize + segmentSize / 2;
+    const rotationOffset = (360 - targetAngleOnWheel) % 360;
+    const currentRotationMod = rotation % 360;
+    const additionalRotation = (rotationOffset - currentRotationMod + 360) % 360;
+    
+    // Spin at least 5 full turns + the offset to land on the winner
+    const totalRotation = rotation + (360 * 5) + additionalRotation;
     
     setRotation(totalRotation);
 
     setTimeout(() => {
       setIsSpinning(false);
-      const actualDegrees = totalRotation % 360;
-      const segmentSize = 360 / PRODUCTS.length;
-      const winningIndex = Math.floor((360 - (actualDegrees % 360)) / segmentSize) % PRODUCTS.length;
-      
-      const winningProduct = PRODUCTS[winningIndex];
-      setWinner(winningProduct);
+      setWinner(PRODUCTS[winningIndex]);
       setShowModal(true);
       
       confetti({
@@ -196,13 +199,16 @@ export default function App() {
                       y="50"
                       transform={`rotate(${startAngle + angle / 2}, 50, 50)`}
                       fill={index === 3 ? 'white' : '#0F172A'}
-                      fontSize="6"
+                      fontSize="5"
                       fontWeight="900"
                       textAnchor="middle"
                       dominantBaseline="middle"
                       style={{ fontFamily: 'sans-serif' }}
                     >
-                      ¡GANA!
+                      <tspan x="75" dy="-1.5">GANA</tspan>
+                      <tspan x="75" dy="4.5" fontSize="2" opacity="0.7" fontWeight="700">
+                        {product.name.split(' ')[0]}
+                      </tspan>
                     </text>
                     
                     {/* Larger Golden Star at the edge */}
