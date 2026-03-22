@@ -18,7 +18,7 @@ declare global {
 }
 
 // --- CONFIGURATION ---
-const SUBSCRIPTION_OFFER_LINK = "https://tu-oferta-de-suscripcion.com"; // Change this to your subscription offer link
+const SUBSCRIPTION_OFFER_LINK = "https://topsurveys.app/register?ref=a14621b1-8536-46b9-8740-02e6f910ebff"; // Change this to your subscription offer link
 const INITIAL_SPINS = 1;
 
 interface Product {
@@ -30,12 +30,12 @@ interface Product {
 }
 
 const PRODUCTS: Product[] = [
-  { id: 1, name: 'Masterclass de Trading', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=70090&tracking_id=/trading', color: '#FF6B6B', description: 'Aprende a invertir como un profesional.' },
-  { id: 2, name: 'Curso de Marketing Digital', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=56777&tracking_id= /mkt', color: '#4ECDC4', description: 'Domina las redes sociales y vende más.' },
-  { id: 3, name: 'Suplemento Keto Pro', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=70157&tracking_id= ', color: '#FFE66D', description: 'Energía pura para tu estilo de vida.' },
-  { id: 4, name: 'Ebook: Libertad Financiera', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=71637&tracking_id= ', color: '#1A535C', description: 'El camino hacia tu independencia.' },
-  { id: 5, name: 'Software SEO Elite', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=71187&tracking_id= ', color: '#F7FFF7', description: 'Posiciona tu web en el primer lugar.' },
-  { id: 6, name: 'Membresía Fitness VIP', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=68576&tracking_id= ', color: '#FF9F1C', description: 'Entrena desde casa con los mejores.' },
+  { id: 1, name: 'Tarjeta Regalo $500', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=68576&tracking_id=', color: '#FF6B6B', description: '¡Felicidades! Has ganado la oportunidad de obtener una tarjeta de regalo exclusiva.' },
+  { id: 2, name: 'iPhone 15 Pro Max', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=71187&tracking_id=', color: '#4ECDC4', description: '¡Increíble! Participa ahora para llevarte el último iPhone a casa.' },
+  { id: 3, name: 'Sorteo PlayStation 5', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=71637&tracking_id=', color: '#FFE66D', description: 'La consola de tus sueños te espera. Haz clic para completar tu registro.' },
+  { id: 4, name: 'Vale Amazon $200', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=70157&tracking_id=', color: '#1A535C', description: 'Compra lo que quieras con este vale de Amazon. ¡Reclámalo ya!' },
+  { id: 5, name: 'Muestra Gratis Tech', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=56777&tracking_id=', color: '#F7FFF7', description: 'Recibe muestras exclusivas de los mejores gadgets del mercado.' },
+  { id: 6, name: 'Sorteo PayPal $100', link: 'https://singingfiles.com/show.php?l=0&u=2508758&id=70090&tracking_id=', color: '#FF9F1C', description: 'Dinero directo a tu cuenta. ¡No dejes pasar esta oportunidad!' },
 ];
 
 export default function App() {
@@ -195,21 +195,23 @@ export default function App() {
                       x="75"
                       y="50"
                       transform={`rotate(${startAngle + angle / 2}, 50, 50)`}
-                      fill={index === 3 || index === 4 ? 'white' : '#0F172A'}
-                      className="text-[3px] font-bold uppercase tracking-tighter"
+                      fill={index === 3 ? 'white' : '#0F172A'}
+                      fontSize="6"
+                      fontWeight="900"
                       textAnchor="middle"
                       dominantBaseline="middle"
+                      style={{ fontFamily: 'sans-serif' }}
                     >
-                      {product.name.length > 15 ? product.name.substring(0, 12) + '...' : product.name}
+                      ¡GANA!
                     </text>
                     
-                    {/* Golden Star at the edge */}
+                    {/* Larger Golden Star at the edge */}
                     <path
-                      d="M 0,-1.5 L 0.4,-0.5 L 1.5,-0.5 L 0.6,0.2 L 0.9,1.2 L 0,0.6 L -0.9,1.2 L -0.6,0.2 L -1.5,-0.5 L -0.4,-0.5 Z"
+                      d="M 0,-2.5 L 0.7,-0.8 L 2.5,-0.8 L 1.0,0.3 L 1.5,2.0 L 0,1.0 L -1.5,2.0 L -1.0,0.3 L -2.5,-0.8 L -0.7,-0.8 Z"
                       fill="#FFD700"
                       stroke="#B8860B"
-                      strokeWidth="0.1"
-                      transform={`translate(${50 + 44 * Math.cos((Math.PI * (startAngle + angle / 2)) / 180)}, ${50 + 44 * Math.sin((Math.PI * (startAngle + angle / 2)) / 180)}) rotate(${startAngle + angle / 2 + 90})`}
+                      strokeWidth="0.2"
+                      transform={`translate(${50 + 42 * Math.cos((Math.PI * (startAngle + angle / 2)) / 180)}, ${50 + 42 * Math.sin((Math.PI * (startAngle + angle / 2)) / 180)}) rotate(${startAngle + angle / 2 + 90})`}
                     />
                   </g>
                 );
